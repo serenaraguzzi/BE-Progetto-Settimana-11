@@ -33,7 +33,7 @@
 					<td><input type="date" pattern="yyyy-MM-dd"
 						th:field="*{dataNascita}" id="dataNascita" required="required"
 						placeholder="Inserisci la data di nascita"></td>
-					<td><input type="text" th:field="*{email}" id="email"
+					<td><input type="email" th:field="*{email}" id="email"
 						required="required" placeholder="Inserisci l'email"></td>
 					<td><input type="text" th:field="*{indirizzo}" id="indirizzo"
 						required="required" placeholder="Inserisci l'indirizzo"></td>
@@ -47,9 +47,13 @@
 				</tr>
 			</tbody>
 		</table>
-		<input type="submit" value="Aggiungi studente" />
 		<p>
-			<a href="/index">Homepage</a>
+			<input type="submit" value="Aggiungi studente" />
+		</p>
+		<p>
+			<button>
+				<a href="/index">Homepage</a>
+			</button>
 		</p>
 	</form>
 </body>
