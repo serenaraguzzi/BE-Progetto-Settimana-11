@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Elenco Corsi</title>
+</head>
+<body>
+	<h1>Universita' di Perth</h1>
+	<h2>Lista corsi</h2>
+	<table>
+		<tr>
+			<th>Codice</th>
+			<th>Nome</th>
+			<th>Indirizzo</th>
+			<th>Numero di esami</th>
+		</tr>
+		<div th:each="corso: ${corsi}">
+			<tr>
+				<td th:text="${corso.codice}"></td>
+				<td th:text="${corso.nome}"></td>
+				<td th:text="${corso.indirizzo}"></td>
+				<td th:text="${corso.numeroEsami}"></td>
+				<td><a
+					th:href="@{/aggiornaCorsoform/{codice}(codice=${corso.codice})}">Aggiorna</a></td>
+				<td><a
+					th:href="@{/eliminacorso/{codice}(codice=${corso.codice})}"
+					onclick="return confirm('Sei sicuro di voler eliminare questo elemento?')">Elimina</a></td>
+			</tr>
+		</div>
+	</table>
+	<a href="/aggiungiCorsoform">Aggiungi corso</a>
+	<p>
+		<a href="/index">Homepage</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Visualizza studenti</title>
+</head>
+<body>
+	<h1>Universita di Perth</h1>
+	<h2>Lista studenti</h2>
+	<table>
+		<tr>
+			<th>Matricola</th>
+			<th>Nome</th>
+			<th>Cognome</th>
+			<th>Data di nascita</th>
+			<th>Email</th>
+			<th>Indirizzo</th>
+			<th>Citta'</th>
+			<th>Nome corso di laurea</th>
+			<th>Codice corso di laurea</th>
+		</tr>
+		<div th:each="s : ${dummydb.getStudenti()}">
+			<tr>
+				<td th:text="${s.getMatricola()}"></td>
+				<td th:text="${s.getNome()}"></td>
+				<td th:text="${s.getCognome()}"></td>
+				<td th:text="${s.getDataNascita()}"></td>
+				<td th:text="${s.getEmail()}"></td>
+				<td th:text="${s.getIndirizzo()}"></td>
+				<td th:text="${s.getCitta()}"></td>
+				<td th:text="${s.getCorsoLaurea().getNome()}"></td>
+				<td th:text="${s.getCorsoLaurea().getCodice()}"></td>
+				<td><a
+					th:href="@{/mostraformaggiorna/{matricola}(matricola=${s.getMatricola()})}">Aggiorna</a></td>
+				<td><a
+					th:href="@{/eliminastudente/{matricola}(matricola=${s.getMatricola()})}"
+					onclick="return confirm('Sei sicuro di voler eliminare questo elemento?')">Elimina</a></td>
+			</tr>
+		</div>
+	</table>
+	<a href="/mostraformaggiungi/{matricola}">Aggiungi studente</a>
+	<p>
+		<a href="/index">Homepage</a>
+	</p>
+</body>
+</html>

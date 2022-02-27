@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Aggiorna uno studente</title>
+</head>
+<body>
+	<h1>Universita' di Perth</h1>
+	<h3>Inserisci i dati e aggiorna uno studente</h3>
+	<form action="#"
+		th:action="@{/aggiornaStudente/{matricola}(matricola=${studente.getMatricola()})}"
+		th:object="${studente}" method="POST">
+		<table>
+			<thead>
+				<tr>
+					<th>Matricola</th>
+					<th>Nome</th>
+					<th>Cognome</th>
+					<th>Data di nascita</th>
+					<th>Email</th>
+					<th>Indirizzo</th>
+					<th>Citta'</th>
+					<th>Corso di laurea</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" th:field="*{matricola}" id="matricola"
+						required="required" th:disabled="${matricola!=null}"
+						placeholder="Inserisci la matricola"></td>
+					<td><input type="text" th:field="*{nome}" id="nome"
+						required="required" placeholder="Modifica il nome"></td>
+					<td><input type="text" th:field="*{cognome}" id="cognome"
+						required="required" placeholder="Modifica il cognome"></td>
+					<td><input type="date" pattern="yyyy-MM-dd"
+						th:field="*{dataNascita}" id="dataNascita" required="required"
+						placeholder="Modifica la data di nascita"></td>
+					<td><input type="text" th:field="*{email}" id="email"
+						required="required" placeholder="Modifica l'email"></td>
+					<td><input type="text" th:field="*{indirizzo}" id="indirizzo"
+						required="required" placeholder="Modifica l'indirizzo"></td>
+					<td><input type="text" th:field="*{citta}" id="citta"
+						required="required" placeholder="Modifica la citta'"></td>
+					<td><select th:field="*{corsoLaurea}" required="required">
+							<div th:each="c : ${corsi}">
+								<option th:text="${c.getNome}" th:value="${c.getCodice}"></option>
+							</div>
+					</select></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="Aggiorna studente">
+		<p>
+			<a href="/index">Homepage</a>
+		</p>
+	</form>
+</body>
+</html>
